@@ -8,6 +8,53 @@ module.exports = (sequelize, DataTypes) => {
     
     }
   };
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - firstname
+ *         - lastname
+ *         - username
+ *         - email
+ *         - password
+ *         - phonenumber
+ *         - imageUpload
+ *         - roleId
+ *       properties:
+ *         id:
+ *           type: integer
+ *         firstname:
+ *           type: string
+ *         lastname:
+ *           type: string
+ *         username:
+ *           type: string
+ *         email:
+ *           type: string
+ *         phonenumber:
+ *           type: string
+ *         password:
+ *           type: string
+ *         imageUpload:
+ *           type: string
+ *         roleId:
+ *           type: integer
+ *       example:
+ *         id: 9
+ *         firstname: Ama
+ *         lastname: Ampomaa
+ *         username: legend
+ *         email: ama@gmail.com
+ *         phonenumber: 0543987461
+ *         password: hdgnioguijfg
+ *         imageUpload: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==
+ *         roleId: 2
+ */
+
   User.init({
     firstname: {
       type: DataTypes.STRING,

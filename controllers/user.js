@@ -6,6 +6,7 @@ const {createToken,createAccessToken,generateRefreshToken,verifyUserToken} = req
 const { verifyTokenAndGetUserId } = require('../Middleware/userAuth');
 
 
+
 // Signing up User
 const signup = async (req, res) => {
     try {
@@ -146,6 +147,25 @@ const login = async (req, res) =>{
 // Read all Users
 const findAllUsers = async (req, res) => {
     try {
+        // Filter and Pagination
+        const filter = req.body.query;
+        let where = {};
+        if (filter.firstname) {
+            where.firstname = {[Sequelize.Op.Like]: `%${filter.firstname}%`};
+        }
+
+        const page = parseInt(req.body.page) || 1;
+        const pageSize = parseInt(req.body.limit) || 10;
+        const offset = (page - 1) * pageSize;
+
+        const total = await User.count({ where });
+        const pages = Math.ceil(total / pageSize);
+
+        if (page > pages) {
+            return res.status(404).json({status:'fail', message:'No page found'});
+        }
+
+        //
         const userId = verifyTokenAndGetUserId(req);
         if (!userId)
         return res.status(401).send({status:'false', message: " invalid or expired token"});
@@ -161,6 +181,10 @@ const findAllUsers = async (req, res) => {
          if(get_row?.name != 'user')
          return res.status(401).send({ status: false, message: "User Access Denied" })
          let data = await User.findAll({
+            // Filter and Pagination 
+            where,
+            limit: pageSize,
+            offset,
 
             attributes: {exclude:['createdAt','updatedAt']},
             include:[
@@ -175,7 +199,8 @@ const findAllUsers = async (req, res) => {
             order: [['id','DESC']]
           });
           
-          res.status(200).json({ message: "Retrieval of Users successful", data:{...data}});
+        //   res.status(200).json({ message: "Retrieval of Users successful", data:{...data}});
+        res.status(200).json({status:'Success', message: "Retrieval of Users successful", filter,count: result.length,page,pages,data:data});
          
     }catch{
         res.status(400).send({ status: "Bad Request", message: "Users cannot be rertrieved!" });

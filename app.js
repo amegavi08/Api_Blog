@@ -22,18 +22,18 @@ const options = {
     definition:{
         openapi: '3.0.0',
         info: {
-            openapi: '3.0.0',
+            openapi: '5.0.0',
             title: 'Node Swagger API',
             version: '6.2.8',
-            description: 'This is used for the testing apis for employee management system',
+            description: 'This is used for the testing apis for a blog',
           },
         servers:[
         {
-            url: 'http://localhost:3005/'
-        }
+            url: 'http://localhost:3005'
+        },
     ],
     },
-    apis: ['./routers/*.js'], // path where API specification are written
+    apis: ["./routers/*.js","./db/models/*.js"] // path where API specification are written
 
   };
   
