@@ -45,9 +45,8 @@ const createPost = async (req, res) => {
             return res.status(400).send({status: 'Unauthorised', message:'Post cannot be created'})
         }
 
-    } catch(error){
-        // return res.status(401).send({status: "Unauthorised", message: "User cannot create Post"})
-        console.log(error)
+    } catch{
+        return res.status(401).send({status: "Unauthorised", message: "User cannot create Post"})
     }
 }
 
@@ -92,6 +91,9 @@ const readPost = async (req, res) => {
         return res.status(200).json({message:'Retrieval of Post Successful', postData:{...postData}});
     }catch (error){
         console.log(error)
+        return res
+        .status(409)
+        .send({status: "Bad request", message:"Post cannot be retrieved"});
     }
 }
 
@@ -128,7 +130,7 @@ console.log(userId)
 
   let user_image = await uploadFrontCard(imageUpload)
   
-  let data = await User.update({user_Id, author_name, title, description, imageUpload:user_image},
+  let data = await Post.update({user_Id, author_name, title, description, imageUpload:user_image},
     {
         where: {id:req.params.id}
     }
@@ -138,8 +140,11 @@ console.log(userId)
     }else {
         return res.status(400).send({status:'False',message: 'Post Cnanot be Updated'});
     }
-    }catch (error){
-        console.log(error)
+    }catch{
+        // console.log(error)
+        return res
+        .status(409)
+        .send({status: "Bad Request", message:"Somethong went wrong"});
     }
 }
 
@@ -172,11 +177,14 @@ const deletePost = async (req, res) => {
         if(data){
             return res.status(200).send({status:"success", message:"Post deleted!"});
         }else{
-            return res.status(400).res.send({status:"false", message:"Something Went Wrong!"});
+            return res.status(400).res.send({status:false, message:"Post cannot be deleted"});
         }
       
     } catch (error) {
-        console.log(error)
+        // console.log(error)
+        return res
+        .status(409)
+        .send({status: "Bad request", message:"Something went wrong"});
     }
   }
 module.exports = {

@@ -562,6 +562,9 @@ exports.getPagingData = (data, page, limit) => {
   return { totalItems, items, totalPages, currentPage };
 };
 
+exports.Checknegative = (number) => {
+  return !Object.is(Math.abs(number), + number)
+}
 
 
 exports.rmSubFrmUrl = (fullUrl = "") => {

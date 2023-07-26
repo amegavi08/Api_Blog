@@ -4,11 +4,8 @@ const userController = require('../controllers/user');
 const verifyToken = require("../Middleware/verify_token");
 const userAuth = require('../Middleware/userAuth');
 
-
-
-
 /**
- * @openapi
+ * @swagger
  *  tags:
  *    name: User
  *    description: Operations for users - signup, login, verifyEmail, get
@@ -16,7 +13,7 @@ const userAuth = require('../Middleware/userAuth');
  */
 
 /**
- * @openapi
+ * @swagger
  * /signup:
  *   post:
  *     summary: Sign up users
@@ -32,7 +29,6 @@ const userAuth = require('../Middleware/userAuth');
  *       200:
  *         description: The user was successfully registered
  */
-
 
 
 //signup endpoint

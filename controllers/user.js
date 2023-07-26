@@ -4,6 +4,7 @@ const {sendingMail} = require('../nodemailer/mailing')
 const {uploadFrontCard} = require('../helpers/fileUpload')
 const {createToken,createAccessToken,generateRefreshToken,verifyUserToken} = require("../utils/index");
 const { verifyTokenAndGetUserId } = require('../Middleware/userAuth');
+const {getPagination,getPagingData,Checknegative} = require('../utils/transactions-response')
 
 
 
@@ -51,6 +52,9 @@ const signup = async (req, res) => {
 
     } catch(error){
         console.log(error)
+        return res
+        .status(500)
+        .send({status: "Bad Request", message:"Internal server error"});
     }
 };
 
@@ -81,8 +85,11 @@ const verifyEmail = async(req, res) => {
         return res
         .status(200)
         .send({status: "OK", message:"Your account has been successfully verified"});
-    }catch (error){
-        console.log(error)
+    }catch{
+        // console.log(error)
+        return res
+        .status(409)
+        .send({status: "Bad Request", message:"Your account cannot be verified"});
     }
 };
 
@@ -154,17 +161,18 @@ const findAllUsers = async (req, res) => {
             where.firstname = {[Sequelize.Op.Like]: `%${filter.firstname}%`};
         }
 
-        const page = parseInt(req.body.page) || 1;
-        const pageSize = parseInt(req.body.limit) || 10;
-        const offset = (page - 1) * pageSize;
 
-        const total = await User.count({ where });
-        const pages = Math.ceil(total / pageSize);
+        const page = req.query.page;
+        const size = req.query.size;
 
-        if (page > pages) {
-            return res.status(404).json({status:'fail', message:'No page found'});
-        }
+        let currentPage = Checknegative(page);
+        if(currentPage)
+            return res.status(200).send({status:true, message: 'User current page cannot negative',
+            data:[],
+        });
 
+        const { limit, offset } = getPagination(page, size);
+        
         //
         const userId = verifyTokenAndGetUserId(req);
         if (!userId)
@@ -180,10 +188,9 @@ const findAllUsers = async (req, res) => {
          if(get_row?.name != 'admin')
          if(get_row?.name != 'user')
          return res.status(401).send({ status: false, message: "User Access Denied" })
-         let data = await User.findAll({
-            // Filter and Pagination 
-            where,
-            limit: pageSize,
+         let data = await User.findAndCountAll({
+
+            limit,
             offset,
 
             attributes: {exclude:['createdAt','updatedAt']},
@@ -198,9 +205,12 @@ const findAllUsers = async (req, res) => {
             attributes: {exclude:['password','createdAt','updatedAt']},
             order: [['id','DESC']]
           });
+
+          const response = getPagingData(data,page,limit)
+          console.log(response)
           
-        //   res.status(200).json({ message: "Retrieval of Users successful", data:{...data}});
-        res.status(200).json({status:'Success', message: "Retrieval of Users successful", filter,count: result.length,page,pages,data:data});
+          return res.status(200).json({ message: "Retrieval of Users successful", data:{...data}});
+        //return res.status(200).json({status:'Success', message: "Retrieval of Users successful", filter,count: result.length,page,pages,data:data});
          
     }catch{
         res.status(400).send({ status: "Bad Request", message: "Users cannot be rertrieved!" });
@@ -213,5 +223,7 @@ module.exports = {
     verifyEmail,
     login,
     findAllUsers
+
 }
+
 

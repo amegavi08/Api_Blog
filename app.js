@@ -8,6 +8,7 @@ const secretKey = process.env.secretKey;
 console.log(secretKey);
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 const port = process.env.port || 3005
 
 // Routes initialization
@@ -29,7 +30,7 @@ const options = {
           },
         servers:[
         {
-            url: 'http://localhost:3005'
+            url: 'http://localhost:3005/'
         },
     ],
     },

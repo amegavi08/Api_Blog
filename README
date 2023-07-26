@@ -25,3 +25,5 @@ npx sequelize-cli db:migrate
 npx sequelize-cli db:migrate:status
 npx sequelize-cli seed:generate --name roles
 npx sequelize-cli db:seed:all
+
+https://swagger.io/docs/specification/about/

@@ -18,12 +18,22 @@ const jwt = require('jsonwebtoken');
   if(emailRegexp.test(req.body.email) && phoneNum.test(req.body.phonenumber)){
     const username = await User.findOne({
       where: {
-        username: req.body.username,
+        username: req.body.username
       },
     });
     //if username exist in the database respond with a status of 409
     if (username) {
       return res.status(409).send({status:"Conflict", message: "Username already taken"});
+    }
+
+    // Checking if firstname or lastname exists
+    const firstname = await User.findOne({
+      where: {
+        firstname: req.body.firstname
+      },
+    });
+    if (firstname){
+      return res.status(409).send({status:"Conflict", message: "firstname already taken"});
     }
  
     //checking if email already exist
@@ -35,7 +45,7 @@ const jwt = require('jsonwebtoken');
  
     //if email exist in the database respond with a status of 409
     if (emailcheck) {
-      return res.status(404).send({status: "Not found" ,message:"Email already exist"});
+      return res.status(404).send({status: "Conflict" ,message:"Email already exist"});
     }
  
     const number = await User.findOne({

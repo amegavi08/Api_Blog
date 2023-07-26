@@ -1,0 +1,174 @@
+// Users
+// User Sign up
+POST http://localhost:3005/user/signup
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "firstname": "Francis",
+    "lastname": "Amegavi",
+    "username": "legend",
+    "email": "amegavifrancis@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254864749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+###
+// User Verification
+GET http://localhost:3005/user/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4OTIzODcwMCwiZXhwIjoxNjg5MjM5MDAwfQ.B0287dCxAplL3sf2dmoAg1djuNBI3yuvtXFAb62oXdU
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// User Login
+POST http://localhost:3005/user/login
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+{
+    "email": "amegavifrancis@gmail.com",
+    "password": "Phransix!"
+}
+
+###
+// Getting all Users
+GET http://localhost:3005/user/getAllUsers?page=0
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// Post
+// Creating a post
+POST http://localhost:3005/post/userpost
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "user_Id": "2",
+    "author_name": "Ansah",
+    "title": "The Benefits of Abstraction in Node js",
+    "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+
+###
+// Reading Post
+GET http://localhost:3005/post/readpost
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+
+###
+// Update post
+PUT  http://localhost:3005/post/updatepost/:id
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+{
+    "user_Id": "2",
+    "author_name": "Ansah",
+    "title": "The Benefits of Abstraction in Node js",
+    "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+
+###
+// Delete Post
+DELETE  http://localhost:3005/post/deletepost/:id
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// Comment
+// Creating a comment
+POST http://localhost:3005/comment/createcomment
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "user_Id": "2",
+    "postId": "1",
+    "userComments": "The Benefits of Abstraction in Node js"
+}
+
+###
+// Reading comment
+GET http://localhost:3005/comment/readcomment
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+
+###
+// Updating comments
+PUT http://localhost:3005/comment/updatecomment
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "user_Id": "2",
+    "postId": "1",
+    "userComments": "The Benefits of Abstraction in Node js"
+}
+
+###
+// Deleting Comments
+// Delete Post
+DELETE  http://localhost:3005/comment/commentpost/1
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// Category
+// Creating Category
+POST  http://localhost:3005/category/createcategory
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "user_Id": "2",
+    "postId": "1",
+    "postCategory": "Business"
+}
+
+
+###
+// Read category
+GET http://localhost:3005/category/readcategory
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// Update Category
+PUT  http://localhost:3005/category/updatecategory/2
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "user_Id": "2",
+    "postId": "1",
+    "postCategory": "Business"
+}
+
+###
+// Delete Category
+DELETE  http://localhost:3005/category/deletecategory/2
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 

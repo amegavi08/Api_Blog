@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 /**
- * @openapi
+ * @swagger
  * components:
  *   schemas:
  *     User:
@@ -25,8 +25,6 @@ module.exports = (sequelize, DataTypes) => {
  *         - imageUpload
  *         - roleId
  *       properties:
- *         id:
- *           type: integer
  *         firstname:
  *           type: string
  *         lastname:
@@ -44,7 +42,6 @@ module.exports = (sequelize, DataTypes) => {
  *         roleId:
  *           type: integer
  *       example:
- *         id: 9
  *         firstname: Ama
  *         lastname: Ampomaa
  *         username: legend
