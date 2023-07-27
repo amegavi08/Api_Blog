@@ -1,4 +1,5 @@
-const { model_aliases } = require("./models");
+// const { model_aliases } = require("./models");
+const {User} = require('../db/models')
 const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 const res_status = {
   ERROR: "error",
@@ -565,6 +566,14 @@ exports.getPagingData = (data, page, limit) => {
 exports.Checknegative = (number) => {
   return !Object.is(Math.abs(number), + number)
 }
+
+exports.searchUsers = async (username) => {
+  
+  return await User.findOne({
+    attributes: {exclude:['createdAt','updatedAt']},
+    where: { username },
+  });
+} 
 
 
 exports.rmSubFrmUrl = (fullUrl = "") => {

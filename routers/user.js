@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require('../controllers/user');
 const verifyToken = require("../Middleware/verify_token");
 const userAuth = require('../Middleware/userAuth');
+// const {filterUsersByDateRange} = require('../controllers/user')
 
 /**
  * @swagger
@@ -42,7 +43,22 @@ router.post('/login',userController.login)
 // Email verification
 router.get('/verify-email/:token',userController.verifyEmail)
 
+// Create user
+router.post('/createuser', userController.createUser)
+
 // Read all user
 router.get('/getAllUsers',userController.findAllUsers)
+
+// Update users
+router.put('/updateuser/:id', userController.updateUsers)
+
+// Delete user
+router.delete('/deleteuser/:id', userController.deleteUser)
+
+// Search 
+router.get('/search/:username', userController.searchUser)
+
+// Filtering By Date range
+router.get('/filteredUsers', userController.filterUsersByDateRange);
 
 module.exports = router;

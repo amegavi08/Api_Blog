@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       Post.hasMany(models.Comment, { as: 'post_comment',  foreignKey: 'postId' ,targetKey:'id'});
-      Post.hasMany(models.Category, { as: 'post_category',  foreignKey: 'postId' ,targetKey:'id'});
+      // Post.hasMany(models.Category, { as: 'post_category',  foreignKey: 'postId' ,targetKey:'id'});
     }};
   Post.init({
     user_Id: {
@@ -38,6 +38,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
+          notNull: {
+            args: true,
+            msg: "description is required",
+          },
+          notEmpty: true,
+        }
+      },
+      postcategory: {
+        type: DataTypes.STRING,
+        allowNull:false,
+             validate: {
           notNull: {
             args: true,
             msg: "description is required",

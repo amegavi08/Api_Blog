@@ -6,19 +6,19 @@ Accept: application/json
 Authorization: Bearer
 
 {
-    "firstname": "Francis",
-    "lastname": "Amegavi",
-    "username": "legend",
-    "email": "amegavifrancis@gmail.com",
+    "firstname": "Prince",
+    "lastname": "Kwarko",
+    "username": "Canister",
+    "email": "kemiqals93@gmail.com",
     "password": "carson.",
-    "phonenumber": "0254864749",
+    "phonenumber": "0254004749",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
-    "roleId": 1
+    "roleId": 2
 }
 
 ###
 // User Verification
-GET http://192.168.100.187:3005/user/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4OTIzODcwMCwiZXhwIjoxNjg5MjM5MDAwfQ.B0287dCxAplL3sf2dmoAg1djuNBI3yuvtXFAb62oXdU
+GET http://192.168.100.187:3005/user/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2NjgzOSwiZXhwIjoxNjkwNDY3MTM5fQ.d1L1PDjKsagNkPoSraGD7YEpQ437K2iwkXiXC31tdFo
 Content-Type: application/json
 Accept: application/json
 Authorization:  Bearer 
@@ -31,16 +31,72 @@ Accept: application/json
 Authorization:  Bearer 
 
 {
-    "email": "amegavifrancis@gmail.com",
-    "password": "Phransix!"
+    "email": "legendsa@gmail.com",
+    "password": "carson."
 }
 
+
 ###
-// Getting all Users
+// Creating User
+POST   http://192.168.100.187:3005/user/createuser
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2Njk5MywiZXhwIjoxNjkwNDY3MjkzfQ.DtEkKrMRBUxgE9qsFRuGkXXGr44dqAWXjNd4dDvaEhM
+
+{
+    "firstname": "Ampong",
+    "lastname": "Kanayo",
+    "username": "Canaan",
+    "email": "legendsa@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254869749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+
+
+###
+// Reading Users
 GET http://192.168.100.187:3005/user/getAllUsers?page=0
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2Njk5MywiZXhwIjoxNjkwNDY3MjkzfQ.DtEkKrMRBUxgE9qsFRuGkXXGr44dqAWXjNd4dDvaEhM
+
+
+###
+// Updating User
+PUT  http://192.168.100.187:3005/user/updateuser/4
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2Nzg5OCwiZXhwIjoxNjkwNDY4MTk4fQ.ktU5u2tc4hfKCulkqSv-ttk-d0UFo8aNOBa5IMyU8oM
+
+{
+    "firstname": "Okonkwo",
+    "lastname": "Hakimi",
+    "username": "legendsas",
+    "email": "legendsas@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254869749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+###
+// Deleting User
+DELETE  http://192.168.100.187:3005/user/deleteuser/4
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2Nzg5OCwiZXhwIjoxNjkwNDY4MTk4fQ.ktU5u2tc4hfKCulkqSv-ttk-d0UFo8aNOBa5IMyU8oM
+
+###
+// Search User
+GET http://192.168.100.187:3005/user/search/legendsas
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2Nzg5OCwiZXhwIjoxNjkwNDY4MTk4fQ.ktU5u2tc4hfKCulkqSv-ttk-d0UFo8aNOBa5IMyU8oM
+
+
 
 ###
 // Post
@@ -48,45 +104,47 @@ Authorization:  Bearer
 POST http://192.168.100.187:3005/post/userpost
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2ODI5OSwiZXhwIjoxNjkwNDY4NTk5fQ.c-lVuYcpJBERiZrs2AnJaMUkQW1nBDbp6lhq8PiruGA
 
 {
-    "user_Id": "2",
-    "author_name": "Ansah",
-    "title": "The Benefits of Abstraction in Node js",
+    "user_Id": "4",
+    "author_name": "Komanda",
+    "title": "The Benefits of Sleeping in Node js",
     "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Health",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 }
 
 ###
 // Reading Post
-GET http://192.168.100.187:3005/post/readpost
+GET http://192.168.100.187:3005/post/readpost?page=1
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTY5MDQ2ODkyNCwiZXhwIjoxNjkwNDY5MjI0fQ.HyP-bGsgIKp8r1ABohKYUH1lHAA80JVMDQyeeHXjR2U
 
 
 ###
 // Update post
-PUT  http://192.168.100.187:3005/post/updatepost/:id
+PUT  http://192.168.100.187:3005/post/updatepost/9
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ2OTY5NSwiZXhwIjoxNjkwNDY5OTk1fQ.PLt2gUmF5gftQqyC7aNumyaSDO_UGqgfvSAde0ecKVg
 
 {
-    "user_Id": "2",
-    "author_name": "Ansah",
+    "user_Id": "6",
+    "author_name": "Asaha",
     "title": "The Benefits of Abstraction in Node js",
     "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Health",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 }
 
 ###
 // Delete Post
-DELETE  http://192.168.100.187:3005/post/deletepost/:id
+DELETE  http://192.168.100.187:3005/post/deletepost/11
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ2OTY5NSwiZXhwIjoxNjkwNDY5OTk1fQ.PLt2gUmF5gftQqyC7aNumyaSDO_UGqgfvSAde0ecKVg
 
 ###
 // Comment
@@ -94,42 +152,44 @@ Authorization:  Bearer
 POST http://192.168.100.187:3005/comment/createcomment
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ2OTY5NSwiZXhwIjoxNjkwNDY5OTk1fQ.PLt2gUmF5gftQqyC7aNumyaSDO_UGqgfvSAde0ecKVg
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "userComments": "The Benefits of Abstraction in Node js"
+    "user_Id": "7",
+    "postId": "9",
+    "userComments": "The Benefits of Abstraction in Node",
+    "status": "active"
 }
 
 ###
 // Reading comment
-GET http://192.168.100.187:3005/comment/readcomment
+GET http://192.168.100.187:3005/comment/readcomment?page=1
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ2OTY5NSwiZXhwIjoxNjkwNDY5OTk1fQ.PLt2gUmF5gftQqyC7aNumyaSDO_UGqgfvSAde0ecKVg
 
 
 ###
 // Updating comments
-PUT http://192.168.100.187:3005/comment/updatecomment
+PUT http://192.168.100.187:3005/comment/updatecomment/9
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDAyNiwiZXhwIjoxNjkwNDcwMzI2fQ.yseOB-rsDqol-TgvedGa_2fXsDpL6YW-mUTsaCb3aEk
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "userComments": "The Benefits of Abstraction in Node js"
+    "user_Id": "7",
+    "postId": "9",
+    "userComments": "The Benefits of Abstraction in Node",
+    "status": "active"
 }
 
 ###
 // Deleting Comments
 // Delete Post
-DELETE  http://192.168.100.187:3005/comment/commentpost/1
+DELETE  http://192.168.100.187:3005/comment/deletecomment/15
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDAyNiwiZXhwIjoxNjkwNDcwMzI2fQ.yseOB-rsDqol-TgvedGa_2fXsDpL6YW-mUTsaCb3aEk
 
 ###
 // Category
@@ -137,38 +197,38 @@ Authorization:  Bearer
 POST  http://192.168.100.187:3005/category/createcategory
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDAyNiwiZXhwIjoxNjkwNDcwMzI2fQ.yseOB-rsDqol-TgvedGa_2fXsDpL6YW-mUTsaCb3aEk
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "postCategory": "Business"
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "inactive"
 }
 
 
 ###
 // Read category
-GET http://192.168.100.187:3005/category/readcategory
+GET http://192.168.100.187:3005/category/readcategory?page=0
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDAyNiwiZXhwIjoxNjkwNDcwMzI2fQ.yseOB-rsDqol-TgvedGa_2fXsDpL6YW-mUTsaCb3aEk
 
 ###
 // Update Category
 PUT  http://192.168.100.187:3005/category/updatecategory/2
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDM1MCwiZXhwIjoxNjkwNDcwNjUwfQ.orSgg0V8Nmqq5yvhutNvKgawOYnXDNRHCikWPeP9v8o
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "postCategory": "Business"
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "inactive"
 }
 
 ###
 // Delete Category
-DELETE  http://192.168.100.187:3005/category/deletecategory/2
+DELETE  http://192.168.100.187:3005/category/deletecategory/8
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3MDM1MCwiZXhwIjoxNjkwNDcwNjUwfQ.orSgg0V8Nmqq5yvhutNvKgawOYnXDNRHCikWPeP9v8o

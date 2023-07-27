@@ -1,3 +1,4 @@
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -9,12 +10,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('Comments', {
+    await queryInterface.createTable('Posts', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+        primaryKey: true
       },
       user_Id:{
         type: Sequelize.INTEGER,
@@ -25,21 +26,21 @@ module.exports = {
           as: 'user_role'
         },
       },
-      postId:{
-        type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
-        references: {
-          model: 'Posts',
-          key: 'id', 
-          as: 'user_post'
-        },
-      },
-      userComments: {
+      author_name:{
         type: Sequelize.STRING
       },
-      status: {
-        type: Sequelize.STRING,
-        defaultValue: 'active'
+      title:{
+        type: Sequelize.STRING
+      },
+      description:{
+        type: Sequelize.STRING
+      },
+      postcategory:{
+        type: Sequelize.INTEGER,
+        required: true,
+      },
+      imageUpload:{
+        type: Sequelize.STRING
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -50,7 +51,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
+      }
     });
   },
 
@@ -61,6 +62,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('Comments')
+    await queryInterface.dropTable('Posts')
   }
 };

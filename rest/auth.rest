@@ -6,12 +6,12 @@ Accept: application/json
 Authorization: Bearer
 
 {
-    "firstname": "Francis",
-    "lastname": "Amegavi",
-    "username": "legend",
-    "email": "amegavifrancis@gmail.com",
+    "firstname": "Gideon",
+    "lastname": "Akayode",
+    "username": "legends",
+    "email": "legends@gmail.com",
     "password": "carson.",
-    "phonenumber": "0254864749",
+    "phonenumber": "0254869749",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "roleId": 1
 }
@@ -31,16 +31,68 @@ Accept: application/json
 Authorization:  Bearer 
 
 {
-    "email": "amegavifrancis@gmail.com",
-    "password": "Phransix!"
+    "email": "legends@gmail.com",
+    "password": "carson."
 }
 
 ###
-// Getting all Users
+// Creating User
+POST   http://localhost:3005/user/createuser
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "firstname": "Gideon",
+    "lastname": "Akayode",
+    "username": "legends",
+    "email": "legends@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254869749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+
+###
+// Reading Users
 GET http://localhost:3005/user/getAllUsers?page=0
 Content-Type: application/json
 Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODM3OSwiZXhwIjoxNjkwNDE4Njc5fQ.Q2Mh_L1he9uKElPIdcEPd5LPdgJ_DTdygK04bJBbQGg
+
+###
+// Updating User
+PUT  http://localhost:3005/user/updateuser/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "firstname": "Prince",
+    "lastname": "Kwarko",
+    "username": "Canister",
+    "email": "kemiqals93@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254004749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 2
+}
+
+###
+// Deleting User
+DELETE  http://localhost:3005/user/deleteuser/4
+Content-Type: application/json
+Accept: application/json
 Authorization:  Bearer 
+
+###
+// Search User
+GET http://localhost:3005/user/search/legends
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQ1Mjg5MCwiZXhwIjoxNjkwNDUzMTkwfQ.aUK55lil2KpyfjUkbGmO0mWBCk29RVcDLeyYb_4hZcs
+
 
 ###
 // Post
@@ -48,13 +100,14 @@ Authorization:  Bearer
 POST http://localhost:3005/post/userpost
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODM3OSwiZXhwIjoxNjkwNDE4Njc5fQ.Q2Mh_L1he9uKElPIdcEPd5LPdgJ_DTdygK04bJBbQGg
 
 {
-    "user_Id": "2",
-    "author_name": "Ansah",
-    "title": "The Benefits of Abstraction in Node js",
+    "user_Id": "4",
+    "author_name": "Komanda",
+    "title": "The Benefits of Sleeping in Node js",
     "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Health",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 }
 
@@ -63,30 +116,31 @@ Authorization: Bearer
 GET http://localhost:3005/post/readpost
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxOTI3MiwiZXhwIjoxNjkwNDE5NTcyfQ.wCCOELCE4xVKjuHQPZmVj95YGjXYkCaJZDpxoSakaIE
 
 
 ###
 // Update post
-PUT  http://localhost:3005/post/updatepost/:id
+PUT  http://localhost:3005/post/updatepost/9
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODc2MCwiZXhwIjoxNjkwNDE5MDYwfQ.AGN-qimWP0sA9SwsTkeIVrmcCQq03b_YNK5t12jWrh4
 
 {
-    "user_Id": "2",
-    "author_name": "Ansah",
-    "title": "The Benefits of Abstraction in Node js",
+    "user_Id": "4",
+    "author_name": "Komanda",
+    "title": "The Benefits of Sleeping in Node js",
     "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Health",
     "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 }
 
 ###
 // Delete Post
-DELETE  http://localhost:3005/post/deletepost/:id
+DELETE  http://localhost:3005/post/deletepost/4
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODk1OSwiZXhwIjoxNjkwNDE5MjU5fQ.qzhd3OzMI5aYAzzOqF3efUkJnCba1hp8ktj6dgiC2iU
 
 ###
 // Comment
@@ -94,12 +148,13 @@ Authorization:  Bearer
 POST http://localhost:3005/comment/createcomment
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxOTI3MiwiZXhwIjoxNjkwNDE5NTcyfQ.wCCOELCE4xVKjuHQPZmVj95YGjXYkCaJZDpxoSakaIE
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "userComments": "The Benefits of Abstraction in Node js"
+    "user_Id": "7",
+    "postId": "9",
+    "userComments": "The Benefits of Abstraction in Node",
+    "status": "active"
 }
 
 ###
@@ -107,29 +162,28 @@ Authorization: Bearer
 GET http://localhost:3005/comment/readcomment
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxOTI3MiwiZXhwIjoxNjkwNDE5NTcyfQ.wCCOELCE4xVKjuHQPZmVj95YGjXYkCaJZDpxoSakaIE
 
 
 ###
 // Updating comments
-PUT http://localhost:3005/comment/updatecomment
+PUT http://localhost:3005/comment/updatecomment/8
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxOTY5MSwiZXhwIjoxNjkwNDE5OTkxfQ.OGEIep7G_lqGwu6A5cvTmvDsTF6xYaL0ywoo6f7uc5A
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "userComments": "The Benefits of Abstraction in Node js"
+    "user_Id": "7",
+    "postId": "9",
+    "userComments": "The Benefits of Abstraction in Node",
+    "status": "active"
 }
-
 ###
 // Deleting Comments
-// Delete Post
-DELETE  http://localhost:3005/comment/commentpost/1
+DELETE  http://localhost:3005/comment/deletecomment/8
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQyMDA0MywiZXhwIjoxNjkwNDIwMzQzfQ.A1F_4uQ4VKPJ6CeJ0wXDror-O9ydd2zogdghmcKshNY
 
 ###
 // Category
@@ -137,12 +191,12 @@ Authorization:  Bearer
 POST  http://localhost:3005/category/createcategory
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQyMDA0MywiZXhwIjoxNjkwNDIwMzQzfQ.A1F_4uQ4VKPJ6CeJ0wXDror-O9ydd2zogdghmcKshNY
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "postCategory": "Business"
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "inactive"
 }
 
 
@@ -151,19 +205,19 @@ Authorization: Bearer
 GET http://localhost:3005/category/readcategory
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer 
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQyMDA0MywiZXhwIjoxNjkwNDIwMzQzfQ.A1F_4uQ4VKPJ6CeJ0wXDror-O9ydd2zogdghmcKshNY
 
 ###
 // Update Category
-PUT  http://localhost:3005/category/updatecategory/2
+PUT  http://localhost:3005/category/updatecategory/6
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQyMDQxMCwiZXhwIjoxNjkwNDIwNzEwfQ.8XoN64ux5olkfhdLVGW5GIECd0rbb09W-OEMRjBHBOI
 
 {
-    "user_Id": "2",
-    "postId": "1",
-    "postCategory": "Business"
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "inactive"
 }
 
 ###

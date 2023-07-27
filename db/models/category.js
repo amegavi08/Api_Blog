@@ -11,17 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
         Category.belongsTo(models.User, {foreignKey: 'user_Id', as: 'user_category', targetKey:'id'})
-        Category.belongsTo(models.Post, {foreignKey: 'postId', as: 'post_category', targetKey:'id'})
+        // Category.belongsTo(models.Post, {foreignKey: 'postId', as: 'post_category', targetKey:'id'})
     }
   };
   Category.init({
     user_Id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      postId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
       },
     postCategory: {
       type: DataTypes.STRING,
@@ -33,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: true,
       }
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull:false
     },
   }, {
     sequelize,

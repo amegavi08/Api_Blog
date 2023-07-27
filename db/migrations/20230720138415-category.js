@@ -1,5 +1,6 @@
-
 'use strict';
+
+const { required } = require('@hapi/joi/lib/base');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -10,12 +11,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('Posts', {
+    await queryInterface.createTable('Categories', {
       id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        type: Sequelize.INTEGER
       },
       user_Id:{
         type: Sequelize.INTEGER,
@@ -26,17 +27,13 @@ module.exports = {
           as: 'user_role'
         },
       },
-      author_name:{
-        type: Sequelize.STRING
+      postCategory: {
+        type: Sequelize.STRING,
+        required: true
       },
-      title:{
-        type: Sequelize.STRING
-      },
-      description:{
-        type: Sequelize.STRING
-      },
-      imageUpload:{
-        type: Sequelize.STRING
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -47,7 +44,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      }
+      },
     });
   },
 
@@ -58,6 +55,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('Posts')
+    await queryInterface.dropTable('Categories')
   }
 };
