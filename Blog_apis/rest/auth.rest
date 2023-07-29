@@ -1,0 +1,235 @@
+// Users
+// User Sign up
+POST http://localhost:3005/user/signup
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "firstname": "Gideon",
+    "lastname": "Akayode",
+    "username": "legends",
+    "email": "legends@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254869149",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+###
+// User Verification
+GET http://localhost:3005/user/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY4OTIzODcwMCwiZXhwIjoxNjg5MjM5MDAwfQ.B0287dCxAplL3sf2dmoAg1djuNBI3yuvtXFAb62oXdU
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// User Login
+POST http://localhost:3005/user/login
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+{
+    "email": "legendsa@gmail.com",
+    "password": "carson."
+}
+
+###
+// Creating User
+POST   http://localhost:3005/user/createuser
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDQ3NzMwNywiZXhwIjoxNjkwNDc3NjA3fQ.ri73fy0sPFUWLwgw9m-_q1IQLD-qnZfD8FJyhaTKnyo
+
+{
+    "firstname": "Erasmus",
+    "lastname": "Kotni",
+    "username": "legends",
+    "email": "legends@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254869749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
+}
+
+
+###
+// Reading Users
+GET http://localhost:3005/user/getAllUsers?page=0
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODM3OSwiZXhwIjoxNjkwNDE4Njc5fQ.Q2Mh_L1he9uKElPIdcEPd5LPdgJ_DTdygK04bJBbQGg
+
+###
+// Updating User
+PUT  http://localhost:3005/user/updateuser/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer
+
+{
+    "firstname": "Prince",
+    "lastname": "Kwarko",
+    "username": "Canister",
+    "email": "kemiqals93@gmail.com",
+    "password": "carson.",
+    "phonenumber": "0254004749",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 2
+}
+
+###
+// Deleting User
+DELETE  http://localhost:3005/user/deleteuser/4
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer 
+
+###
+// Search User
+GET http://localhost:3005/user/search/legends
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQ1Mjg5MCwiZXhwIjoxNjkwNDUzMTkwfQ.aUK55lil2KpyfjUkbGmO0mWBCk29RVcDLeyYb_4hZcs
+
+
+###
+// Post
+// Creating a post
+POST http://localhost:3005/post/userpost
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDU1NTQ3OCwiZXhwIjoxNjkwNTU1Nzc4fQ.fk2GElRTUlldh71jegwcgkr9UXSQfkTlhcLsh9WhmNQ
+
+{
+    "user_Id": "9",
+    "author_name": "Komonda",
+    "title": "The Benefits of Resting at least 7 hours",
+    "description": "In refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Agric",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+
+###
+// Reading Post
+GET http://localhost:3005/post/readpost?page=0
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDc3MiwiZXhwIjoxNjkwNTIxMDcyfQ.qR82B0R2DgIiQtn6RNuXaQtITtbrhEmnK0HR0qVuIto
+
+
+###
+// Update post
+PUT  http://localhost:3005/post/updatepost/1
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDQ0NywiZXhwIjoxNjkwNTIwNzQ3fQ.XBro2Tw9Kn6BOv_O-KkxRqZ_dLMFvBMkX4yRHDMqOKk
+
+{
+    "user_Id": "4",
+    "author_name": "Komanda",
+    "title": "The Benefits of Inheritance in Node js",
+    "description": "In Node.js, abstraction refers to the concept of hiding the implementation details of a module or functionality and exposing only the necessary interfaces to the outside world",
+    "postcategory": "Technology",
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+
+###
+// Delete Post
+DELETE  http://localhost:3005/post/deletepost/4
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODk1OSwiZXhwIjoxNjkwNDE5MjU5fQ.qzhd3OzMI5aYAzzOqF3efUkJnCba1hp8ktj6dgiC2iU
+
+###
+// Comment
+// Creating a comment
+POST http://localhost:3005/comment/createcomment
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDQ0NywiZXhwIjoxNjkwNTIwNzQ3fQ.XBro2Tw9Kn6BOv_O-KkxRqZ_dLMFvBMkX4yRHDMqOKk
+
+{
+    "user_Id": "7",
+    "postId": "1",
+    "userComments": "This was quite an insightful article. I really enjoyed it",
+    "status": "active"
+}
+
+###
+// Reading comment
+GET http://localhost:3005/comment/readcomment
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDQ0NywiZXhwIjoxNjkwNTIwNzQ3fQ.XBro2Tw9Kn6BOv_O-KkxRqZ_dLMFvBMkX4yRHDMqOKk
+
+
+###
+// Updating comments
+PUT http://localhost:3005/comment/updatecomment/8
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxOTY5MSwiZXhwIjoxNjkwNDE5OTkxfQ.OGEIep7G_lqGwu6A5cvTmvDsTF6xYaL0ywoo6f7uc5A
+
+{
+    "user_Id": "7",
+    "postId": "9",
+    "userComments": "The Benefits of Abstraction in Node",
+    "status": "active"
+}
+###
+// Deleting Comments
+DELETE  http://localhost:3005/comment/deletecomment/8
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQyMDA0MywiZXhwIjoxNjkwNDIwMzQzfQ.A1F_4uQ4VKPJ6CeJ0wXDror-O9ydd2zogdghmcKshNY
+
+###
+// Category
+// Creating Category
+POST  http://localhost:3005/category/createcategory
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDc3MiwiZXhwIjoxNjkwNTIxMDcyfQ.qR82B0R2DgIiQtn6RNuXaQtITtbrhEmnK0HR0qVuIto
+
+{
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "inactive"
+}
+
+
+###
+// Read category
+GET http://localhost:3005/category/readcategory
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMDc3MiwiZXhwIjoxNjkwNTIxMDcyfQ.qR82B0R2DgIiQtn6RNuXaQtITtbrhEmnK0HR0qVuIto
+
+###
+// Update Category
+PUT  http://localhost:3005/category/updatecategory/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY5MDUyMTA4MiwiZXhwIjoxNjkwNTIxMzgyfQ.8V80XnX4OoOnlxpC3D29cX6oXRaNYgSgs1Zorwr7Sn8
+
+{
+    "user_Id": "5",
+    "postCategory": "Business",
+    "status": "active"
+}
+
+###
+// Delete Category
+DELETE  http://localhost:3005/category/deletecategory/2
+Content-Type: application/json
+Accept: application/json
+Authorization:  Bearer
+
+###
+// Search Category status
+GET http://localhost:3005/category/search/active
+Content-Type: application/json
+Accept: application/json
+Authorization: 

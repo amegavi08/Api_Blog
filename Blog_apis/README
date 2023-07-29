@@ -1,0 +1,58 @@
+Create Database
+yarn db:create
+
+Drop Database
+yarn db:drop
+
+Migrate Database Tables
+yarn db:migrate
+
+Seed Records into Tables
+yarn  db:seed-dev
+
+command line for creating new migration file (table)
+npx sequelize-cli migration:generate --name create_user_table
+
+
+command line for creating new seed file
+npx sequelize-cli seed:generate --name users
+
+npx sequelize-cli init
+npx sequelize-cli init
+npx sequelize-cli db:drop
+npx sequelize-cli db:create
+npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate:status
+npx sequelize-cli seed:generate --name roles
+npx sequelize-cli db:seed:all
+
+https://swagger.io/docs/specification/about/
+
+
+const postId = 1;
+
+// Find the post by ID, and include the associated category in the query
+Post.findByPk(postId, {
+  include: {
+    model: Category,
+    attributes: ['id', 'name'], // Include only specific attributes of the category if needed
+  },
+})
+  .then((post) => {
+    if (post) {
+      // The post is found
+      if (post.Category) {
+        // The post has a category associated with it
+        console.log('Post category:', post.Category.name);
+      } else {
+        // The post has no associated category
+        console.log('Post has no category associated.');
+      }
+    } else {
+      // The post is not found
+      console.log('Post not found.');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
