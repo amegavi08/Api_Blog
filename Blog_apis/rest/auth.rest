@@ -9,10 +9,11 @@ Authorization: Bearer
     "firstname": "Gideon",
     "lastname": "Akayode",
     "username": "legends",
-    "email": "amegavifrancis@gmail.com",
+    "email": "legends@gmail.com",
     "password": "carson.",
     "phonenumber": "0254869149",
-    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+    "imageUpload": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "roleId": 1
 }
 
 ###
@@ -30,7 +31,7 @@ Accept: application/json
 Authorization:  Bearer 
 
 {
-    "email": "amegavifrancis@gmail.com",
+    "email": "legendsa@gmail.com",
     "password": "carson."
 }
 
@@ -55,10 +56,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhd
 
 ###
 // Reading Users
-GET http://localhost:3005/user/getAllUsers
+GET http://localhost:3005/user/getAllUsers?page=0
 Content-Type: application/json
 Accept: application/json
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTc3MTg1NzUxMSwiZXhwIjoxNzcxODU3ODExfQ.RJ0U_nrIOmlgQ8EoU19vE0dvwJfPh4eoVzresseexpw
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY5MDQxODM3OSwiZXhwIjoxNjkwNDE4Njc5fQ.Q2Mh_L1he9uKElPIdcEPd5LPdgJ_DTdygK04bJBbQGg
+
 ###
 // Updating User
 PUT  http://localhost:3005/user/updateuser/1

@@ -1,10 +1,10 @@
 {
   "name": "blog_apis",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "node index.js",
+    "start": "nodemon app.js",
+    "dev": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -35,7 +35,7 @@
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
+    "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0"
   }
 }

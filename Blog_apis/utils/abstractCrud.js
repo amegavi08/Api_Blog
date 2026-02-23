@@ -1,9 +1,4 @@
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bcff153449542b75a3ccc62a237c544ac56b9bb5
 async function updateOrCreate (model, where, newItem) {
     // First try to find the record
    const foundItem = await model.findOne({where});
