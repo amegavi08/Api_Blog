@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 const {User, Role} = require('../db/models')
 const {sendingMail} = require('../nodemailer/mailing')
 const {uploadFrontCard} = require('../helpers/fileUpload')
-const {createToken,createAccessToken,generateRefreshToken,verifyUserToken} = require("../utils/auth_index");
+const {createToken,createAccessToken,generateRefreshToken,verifyUserToken} = require("../utils/index");
 const { verifyTokenAndGetUserId } = require('../Middleware/userAuth');
 const {getPagination,getPagingData,Checknegative,searchUsers} = require('../utils/transactions-response')
 
